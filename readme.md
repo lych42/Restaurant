@@ -26,6 +26,7 @@ vitrine pour le Quai Antique avec ce goût de la qualité que recherche Arnaud M
  * Symfony CLI
  * Docker 
  * Docker-compose
+ * nodejs et npm
 
 Vous pouvez vérifier les pré-requis (sauf Docker et Docker-compose) avec la commande suivantye (de la CLI Symfony) :
 
@@ -34,6 +35,9 @@ Vous pouvez vérifier les pré-requis (sauf Docker et Docker-compose) avec la co
 
 ## Lancer l'environnement de développement 
 
+    composer install
+    npm install
+    npm run build
     docker-compose up -d
     symfony serve -d
 
