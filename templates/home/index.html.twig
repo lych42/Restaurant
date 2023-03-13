@@ -13,40 +13,5 @@
 {% endblock %}
 
 {% block javascripts %}
-<script>
-    $(document).ready(function() {
-        var images = [
-            '{{ asset('images/image1.png') }}',
-            '{{ asset('images/image2.png') }}',
-            '{{ asset('images/image3.png') }}'
-        ];
-        var currentImage = 0;
 
-        // Affiche la première image
-        $('.jumbotron').css('background-image', 'url(' + images[currentImage] + ')');
-
-        // Change l'image lorsqu'on clique sur les flèches du bouton
-        $('.btn-prev').click(function() {
-            currentImage--;
-            if (currentImage < 0) {
-                currentImage = images.length - 1;
-            }
-            $('.jumbotron').fadeOut(function() {
-                $(this).css('background-image', 'url(' + images[currentImage] + ')');
-                $(this).fadeIn();
-            });
-        });
-
-        $('.btn-next').click(function() {
-            currentImage++;
-            if (currentImage >= images.length) {
-                currentImage = 0;
-            }
-            $('.jumbotron').fadeOut(function() {
-                $(this).css('background-image', 'url(' + images[currentImage] + ')');
-                $(this).fadeIn();
-            });
-        });
-    });
-</script>
 {% endblock %}
