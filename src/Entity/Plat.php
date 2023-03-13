@@ -31,7 +31,7 @@ class Plat
     #[ORM\ManyToOne(inversedBy: 'plat')]
     private ?Photo $photo = null;
 
-    #[ORM\ManyToMany(targetEntity: reservation::class, inversedBy: 'plats')]
+    #[ORM\ManyToMany(targetEntity: Reservation::class, inversedBy: 'plats')]
     private Collection $reservations;
 
     public function __construct()

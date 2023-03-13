@@ -21,7 +21,10 @@ class Formule
     private ?string $prix = null;
 
     #[ORM\ManyToOne(inversedBy: 'formules')]
-    private ?menu $menu = null;
+    private ?Menu $menu = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
 
     public function getId(): ?int
     {
@@ -60,6 +63,18 @@ class Formule
     public function setMenu(?menu $menu): self
     {
         $this->menu = $menu;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
 
         return $this;
     }
