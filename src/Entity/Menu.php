@@ -87,4 +87,9 @@ class Menu
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->titre; // or any other property that you want to display
+    }
 }

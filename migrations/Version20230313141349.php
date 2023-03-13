@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230313131553 extends AbstractMigration
+final class Version20230313141349 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -25,7 +25,7 @@ final class Version20230313131553 extends AbstractMigration
         $this->addSql('ALTER TABLE "user" DROP allergies_defaut');
         $this->addSql('ALTER TABLE "user" ALTER email TYPE VARCHAR(180)');
         $this->addSql('ALTER TABLE "user" ALTER roles TYPE JSON USING roles::json');
-        $this->addSql('ALTER TABLE "user" ALTER roles SET NOT NULL');
+        $this->addSql('ALTER TABLE "user" ALTER roles SET NOT NULL USING roles::json');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649E7927C74 ON "user" (email)');
     }
 
@@ -37,8 +37,8 @@ final class Version20230313131553 extends AbstractMigration
         $this->addSql('ALTER TABLE "user" ADD nombre_convive_defaut VARCHAR(255) DEFAULT NULL');
         $this->addSql('ALTER TABLE "user" ADD allergies_defaut VARCHAR(255) DEFAULT NULL');
         $this->addSql('ALTER TABLE "user" ALTER email TYPE VARCHAR(255)');
-        $this->addSql('ALTER TABLE "user" ALTER roles TYPE VARCHAR(255)');
-        $this->addSql('ALTER TABLE "user" ALTER roles DROP NOT NULL');
+        $this->addSql('ALTER TABLE "user" ALTER roles TYPE VARCHAR(255) USING roles::json');
+        $this->addSql('ALTER TABLE "user" ALTER roles DROP NOT NULL USING roles::json');
         $this->addSql('ALTER TABLE formule DROP nom');
     }
 }
