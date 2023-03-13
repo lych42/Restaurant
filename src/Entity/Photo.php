@@ -24,7 +24,7 @@ class Photo
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'photo', targetEntity: plat::class)]
+    #[ORM\OneToMany(mappedBy: 'photo', targetEntity: Plat::class)]
     private Collection $plat;
 
     public function __construct()
