@@ -1,20 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Le Quai Antique</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
-    </div>
-  </div>
-</nav>
+<div class="jumbotron" style="background-image: url('{{ asset('images/image2.png') }}');">
+    <h1 id="image-title">Caca</h1>
+    <a href="#" class="btn btn-primary btn-lg" role="button">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).ready(function() {
+        var images = [
+            '{{ asset('images/image1.png') }}',
+            '{{ asset('images/image2.png') }}',
+            '{{ asset('images/image3.png') }}'
+        ];
+        var currentImage = 0;
+
+        // Affiche la première image
+        $('.jumbotron').css('background-image', 'url(' + images[currentImage] + ')');
+
+        // Change l'image lorsqu'on clique sur les flèches du bouton
+        $('.btn-prev').click(function() {
+            currentImage--;
+            if (currentImage < 0) {
+                currentImage = images.length - 1;
+            }
+            $('.jumbotron').fadeOut(function() {
+                $(this).css('background-image', 'url(' + images[currentImage] + ')');
+                $(this).fadeIn();
+            });
+        });
+
+        $('.btn-next').click(function() {
+            currentImage++;
+            if (currentImage >= images.length) {
+                currentImage = 0;
+            }
+            $('.jumbotron').fadeOut(function() {
+                $(this).css('background-image', 'url(' + images[currentImage] + ')');
+                $(this).fadeIn();
+            });
+        });
+    });
+</script>
 {% endblock %}
