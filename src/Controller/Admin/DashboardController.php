@@ -6,6 +6,7 @@ use App\Entity\Photo;
 use App\Entity\Formule;
 use App\Entity\Menu;
 use App\Entity\Horaires;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -33,5 +34,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Formules', 'fas fa-list', Formule::class);
         yield MenuItem::linkToCrud('Menu', 'fas fa-list', Menu::class);
         yield MenuItem::linkToCrud('Horaires', 'fas fa-list', Horaires::class);
+        yield MenuItem::linkToCrud('Clients', 'fas fa-list', User::class);
     }
 }

@@ -8,8 +8,6 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Faker\Factory;
 
-require_once 'vendor/autoload.php';
-
 class AppFixtures extends Fixture
 {
     private UserPasswordHasherInterface $hasher;
@@ -25,7 +23,7 @@ class AppFixtures extends Fixture
         $user = new User();
 
         $user->setEmail('user@test.com')
-             ->setRoles(['ROLE_USER']);
+             ->setRoles([]);
     
         $password = $this->hasher->hashPassword($user, 'password');
         $user->setPassword($password);
