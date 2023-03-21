@@ -20,7 +20,7 @@ class PlatCrudController extends AbstractCrudController
             TextField::new('titre'),
             TextField::new('description'),
             NumberField::new('prix'),
-            TextField::new('categorie')
+            TextField::new('categorie'),
         ];
     }
 }

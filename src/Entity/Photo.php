@@ -33,6 +33,9 @@ class Photo
     #[Vich\UploadableField(mapping: "plats_images", fileNameProperty: "imageName")] 
     private ?File $imageFile = null;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
     public function __construct()
     {
         $this->plat = new ArrayCollection();
@@ -70,6 +73,10 @@ class Photo
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
+
+        if ($image) {
+            $this->createdAt = new \DateTimeImmutable('now');
+        }
     }
 
     public function getImageFile()
@@ -115,6 +122,18 @@ class Photo
                 $plat->setPhoto(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
