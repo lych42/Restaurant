@@ -2,27 +2,25 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Photo;
+use App\Entity\Plat;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class PhotoCrudController extends AbstractCrudController
+class PlatCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Photo::class;
+        return Plat::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [
             TextField::new('titre'),
-            TextField::new('image'),
             TextField::new('description'),
-            AssociationField::new('plat')
+            NumberField::new('prix'),
+            TextField::new('categorie')
         ];
     }
-    
 }
