@@ -7,8 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 #[ORM\Entity(repositoryClass: PlatRepository::class)]
+#[Vich\Uploadable]
 class Plat
 {
     #[ORM\Id]
@@ -30,6 +34,12 @@ class Plat
 
     #[ORM\ManyToMany(targetEntity: Reservation::class, inversedBy: 'plats')]
     private Collection $reservations;
+
+    #[ORM\Column(length: 255)]
+    private ?string $file = null;
+
+    #[Vich\UploadableField(mapping: 'plat_images', fileNameProperty: 'File')]
+    private ?File $imageFile = null;
 
     public function __construct()
     {
@@ -115,5 +125,28 @@ class Plat
 
     public function __toString() {
         return(string) $this->titre;
+    }
+
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    public function setFile(string $file): self
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $file = null)
+    {
+        $this->imageFile = $file;
+
+        return $this;
     }
 }
