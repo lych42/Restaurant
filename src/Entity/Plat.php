@@ -28,9 +28,6 @@ class Plat
     #[ORM\Column(length: 255)]
     private ?string $categorie = null;
 
-    #[ORM\ManyToOne(inversedBy: 'plat')]
-    private ?Photo $photo = null;
-
     #[ORM\ManyToMany(targetEntity: Reservation::class, inversedBy: 'plats')]
     private Collection $reservations;
 
@@ -88,18 +85,6 @@ class Plat
     public function setCategorie(string $categorie): self
     {
         $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    public function getPhoto(): ?Photo
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?Photo $photo): self
-    {
-        $this->photo = $photo;
 
         return $this;
     }
