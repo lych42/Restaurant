@@ -21,7 +21,6 @@ final class Version20230321135508 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE photo ADD created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
-        $this->addSql('COMMENT ON COLUMN photo.created_at IS \'(DC2Type:datetime_immutable)\'');
         $this->addSql('ALTER TABLE "user" ALTER roles TYPE JSON');
         $this->addSql('ALTER TABLE "user" ALTER roles SET NOT NULL');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649E7927C74 ON "user" (email)');
@@ -34,6 +33,5 @@ final class Version20230321135508 extends AbstractMigration
         $this->addSql('DROP INDEX UNIQ_8D93D649E7927C74');
         $this->addSql('ALTER TABLE "user" ALTER roles TYPE VARCHAR(255)');
         $this->addSql('ALTER TABLE "user" ALTER roles DROP NOT NULL');
-        $this->addSql('ALTER TABLE photo DROP created_at');
     }
 }
