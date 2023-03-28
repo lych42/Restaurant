@@ -11,6 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
+
 #[Vich\Uploadable]
 class Image
 {
@@ -22,7 +23,7 @@ class Image
     #[ORM\Column(length: 255)]
     private ?string $imageName;
 
-    #[Vich\UploadableField(mapping: "plat_images", fileNameProperty: "imageName")]
+    #[Vich\UploadableField(mapping: "plats_images", fileNameProperty: "imageName")]
     private ?File $imageFile;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
