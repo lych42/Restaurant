@@ -7,11 +7,13 @@ use App\Entity\Menu;
 use App\Entity\Horaires;
 use App\Entity\User;
 use App\Entity\Plat;
+use App\Entity\Image;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class DashboardController extends AbstractDashboardController
 {
@@ -24,7 +26,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Le Quai Antique');
+            ->setTitle('Quai Antique - Espace Admin');
     }
 
     public function configureMenuItems(): iterable
@@ -35,5 +37,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Horaires', 'fas fa-list', Horaires::class);
         yield MenuItem::linkToCrud('Clients', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Plats', 'fas fa-list', Plat::class);
+        yield MenuItem::linkToCrud('Images', 'fas fa-list', Image::class);
     }
+    
 }
