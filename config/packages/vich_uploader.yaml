@@ -3,8 +3,6 @@ vich_uploader:
 
     mappings:
        plat_images:
-            uri_prefix: /images/plats
-            upload_destination: '%kernel.project_dir%/public/images/plats'
-            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-            delete_on_update: false
-            delete_on_remove: false
+            uri_prefix: '%app.path.plat_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.plat_images%'
+           

@@ -20,13 +20,16 @@ class Image
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $imageName = null;
+    private ?string $imageName;
 
-    #[Vich\UploadableField(mapping: 'plat_images', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField(mapping: "plat_images", fileNameProperty: "imageName")]
     private ?File $imageFile;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $updateAt = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $title;
 
     public function getId(): ?int
     {
@@ -47,21 +50,21 @@ class Image
 
 
 	public function getImageFile(): ?File 
-                {
-            		return $this->imageFile;
-            	}
+                         {
+                     		return $this->imageFile;
+                     	}
 	
 
-	public function setImageFile(?File $imageFile = null): self 
-                {
-            		$this->imageFile = $imageFile;
-            
-                    if ($this->imageFile instanceof UploadedFile) {
-                        $this->updateAt = new \DateTime('now');
-                    }
-            
-            		return $this;
-            	}
+	public function setImageFile(?File $imageFile): self
+                         {
+                     		$this->imageFile = $imageFile;
+                     
+                             if ($this->imageFile instanceof UploadedFile) {
+                                 $this->updateAt = new \DateTime('now');
+                             }
+                     
+                     		return $this;
+                     	}
 
     public function getUpdateAt(): ?\DateTimeInterface
     {
@@ -71,6 +74,18 @@ class Image
     public function setUpdateAt(\DateTimeInterface $updateAt): self
     {
         $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }
